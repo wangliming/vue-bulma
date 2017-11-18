@@ -4,11 +4,12 @@ import Resource from 'vue-resource'
 import Moment from 'moment' // 时间处理插件
 
 // demos
-import App from './App'
+import App from './Index'
 import Index from './pages/Index'
 import Set from './pages/Set'
 import Chat from './pages/Chat'
 import Notfound from './demos/404'
+import IndexInfo from './wcomponents/info/Index'
 
 // vuex store
 import store from './store'
@@ -138,11 +139,23 @@ global.$fn = {
 const routes = [
   {
     path: '/',
-    component: Index
+    component: Index,
+    children: [{
+      path: '',
+      component: IndexInfo
+    }]
   },
   {
     path: '/index',
-    component: Index
+    component: Index,
+    children: [{
+      path: 'info',
+      component: IndexInfo
+    },
+    {
+      path: '',
+      component: IndexInfo
+    }]
   },
   {
     path: '/chat',

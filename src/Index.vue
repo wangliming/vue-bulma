@@ -2,14 +2,12 @@
   <section id="app-container">
     <xheader v-if="isAuth"></xheader>
     <section class="page" v-if="isAuth">
-      <nav-menu></nav-menu>
-      <div class="page-container">
-        <transition name="fade">
-          <keep-alive>
-            <router-view></router-view>
-          </keep-alive>
-        </transition>
-      </div>
+      <transition name="fade">
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </transition>
+      
     </section>
     <login v-if='!isAuth' class="is-active"></login>
     <toast :toast-array="toastArray"></toast>
@@ -21,13 +19,13 @@
 <script>
 // vuex全局数据
 import store from './store'
-import Xheader from './components/header'
+import Xheader from './components/wheader'
 import { Toast, Modal } from './components/modal'
-import { NavMenu, Login } from './components/page'
+import { Login } from './components/page'
 export default {
   store: store,
   components: {
-    NavMenu,
+    // NavMenu,
     Login,
     Modal,
     Toast,
@@ -100,7 +98,7 @@ export default {
 
 html, body{
   background-color:#fff;
-  font-family: Helvetica Neue,Helvetica,"Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font-family: "Microsoft YaHei","微软雅黑","Myriad Pro",Lato,"Helvetica Neue",Helvetica,Arial,sans-serif;
   overflow:hidden;
 }
 #app-container{
